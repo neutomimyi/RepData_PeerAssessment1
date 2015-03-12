@@ -1,0 +1,45 @@
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setoptions, echo=FALSE}
+opts_chunk$set(echo = TRUE)
+```
+
+## Loading and preprocessing the data
+```{r}
+        activity <- read.csv("activity.csv", stringsAsFactors = FALSE)
+        activity$datetime <- with(activity, 
+                                  as.POSIXct(date, format = "%Y-%m-%d") 
+                                  + (interval * 60))
+```
+
+
+## What is mean total number of steps taken per day?
+```{r}
+        stepsPerDay <- tapply(activity$steps[!is.na(activity$steps)],
+                        activity$date[!is.na(activity$steps)], sum)
+
+        hist(st, breaks = 10, xlab = "Total Steps Per Day",
+             main = "Total number of steps taken each day")
+```
+```{r}
+        mean(stepsPerDay)
+```
+```{r}
+        median(stepsPerDay)
+```
+
+
+## What is the average daily activity pattern?
+
+
+
+## Imputing missing values
+
+
+
+## Are there differences in activity patterns between weekdays and weekends?
